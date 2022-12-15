@@ -1,0 +1,135 @@
+<head>
+     <link rel="stylesheet" href="scrollbar.css" />
+</head>
+
+<style>
+
+* {
+  box-sizing: border-box;
+  border-style: none;
+   overflow-x: hidden;
+   overflow-y: auto;
+}
+
+.page-wrapper {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+#sky {
+  height: 320%;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+img {
+  vertical-align:bottom;
+  width: 100%;
+  height: 100%;
+}
+
+.bk-container {
+  /* background-color: grey; */
+  width: 100%;
+  height: 45%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 88;
+  align-content: stretch;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 1.5rem;
+  margin-top: -22px;
+  color: #EEEEEE;
+  font-weight: bold;
+  font-size: 20px;
+  user-select: none;
+  z-index: 101;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  color: #DFFF00;
+}
+
+  </style>
+
+<div class="page-wrapper">
+
+      <div class="sky">
+        <img id="sky" src="sky.png">
+      </div>
+
+      <div class="bk-container">
+
+        <div class="mySlides">
+      <img src="bk/lake1.png">
+        </div>
+        <div class="mySlides">
+      <img src="bk/lake2.png">
+        </div>
+        <div class="mySlides">
+      <img src="bk/lawn1.png">
+        </div>
+        <div class="mySlides">
+      <img src="bk/lawn3.png">
+        </div>
+        <div class="mySlides">
+      <img src="bk/beach1.png">
+        </div>
+        <div class="mySlides">
+      <img src="bk/beach2.png">
+        </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#9664;</a>
+    <a class="next" onclick="plusSlides(1)">&#9658;</a>
+
+    </div>
+
+
+
+</div>
+
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>

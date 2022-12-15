@@ -1,0 +1,437 @@
+<head>
+   <!-- <input type="range" min="1" max="100" value="1" class="slider" id="Size-Slider"> -->
+   <link rel="stylesheet" href="nav-buttons.css" />
+   <link rel="stylesheet" href="scrollbar.css" />
+</head>
+
+<body>
+  <style>
+    body {
+      /* background-color: #EEEEEE */
+      /* background-image: url("visuals/grids.png");
+      background-repeat: repeat;
+      background-size: contain; */
+    }
+    </style>
+</body>
+
+<style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  list-style: none;
+  /* cursor: url('visuals/cursor1.png'),auto;
+  cursor: url('visuals/cursor1-.png'),auto; */
+}
+
+  .page-wrapper {
+    padding: 5rem;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    justify-content: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    z-index: -99;
+  }
+  .info {
+    top: 30%;
+    left: 50%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .info::-webkit-scrollbar {
+    display: none;
+  }
+  .info h3 {
+    color: grey;
+    font-size: 15pt;
+    /* font-style: italic; */
+    text-align: left;
+  }
+  .info p {
+    color: grey;
+    font-size: 8pt;
+    font-style: italic;
+    text-align: left;
+  }
+  .italic {
+    font-style: italic;
+  }
+
+  .page-left {
+      resize:horizontal;
+    /* background-color: cyan; */
+    position: relative;
+    top: 2rem;
+    left: 0;
+    width: 40%;
+    max-height: 100%;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-around;
+    border-color: blue;
+    border-width: 2px;
+  }
+  .page-left img {
+    z-index: 100;
+  }
+
+  .page-left img:hover {
+    border-style: dotted;
+    border-color: #DFFF00;
+    border-width: 3px;
+    /* transform: rotateY(360deg);
+    transition: 3s; */
+  }
+
+  .page-left li:hover,
+  .page-left a:hover {
+     background-color: #DFFF00;
+  }
+
+  .instructions {
+    box-sizing: content-box;
+    background-color: #DFFF00;
+    position: relative;
+    top: 0;
+    max-width: 100%; height: auto;
+    border-radius: 16px;
+    text-align: left;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+  }
+  /* .instructions h4 {
+    color: blue;
+  } */
+  .instructions span {
+    display: inline-block;
+    font-size: 10pt;
+    animation: scrolling-left1 8s linear infinite;
+  }
+  @keyframes scrolling-left1 {
+    0% {transform: translateX(100%);
+    -webkit-transform: translateX(100%);}
+    100% {transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);}
+  }
+
+  .img-top,
+  .img-bottom  {
+      background-image: url("visuals/grids.png");
+      background-repeat: repeat;
+      background-size: cover;
+      margin-bottom: 0;
+      padding: 0.5rem;
+      width: 100%;
+      height: 35%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      overflow: auto;
+      border-radius: 15px;
+    }
+  .img-top {
+    box-sizing: content-box;
+    padding-bottom: 1.5rem;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .img-top a {
+      min-width: 15%;
+      height: 50px;
+      border-radius: 20px;
+    }
+  .img-top img,
+  .img-bottom img {
+      max-width: 100%;
+      max-height:100%;
+      z-index: 100;
+      border-radius: 20px;
+      cursor: grab;
+    }
+
+.img {
+    background-image: url("visuals/grids.png");
+    background-repeat: repeat;
+    background-size: cover;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: row;
+    flex: 1 0 auto;
+    justify-content:space-between;
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    max-width: 100%;
+    max-height: 50%;
+    border-radius: 15px;
+  }
+
+.img-left {
+    width: 55%;
+    height: 100%;
+    margin-right: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    direction: rtl;
+  }
+.img-right {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+.img li {
+    background-color: #EEEEEE;
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.8rem;
+    border-radius: 20px;
+  }
+.img-left li {
+    width: 90%;
+    margin-left: 0.5rem;
+    border-radius: 25px;
+  }
+.img img {
+    width: 100%;
+    height: auto;
+    border-radius: 25px;
+    z-index: 100;
+    cursor: grab;
+    resize: both;
+  }
+
+.img-right li {
+    width: 95%;
+    height: auto;
+    margin-right: 0.5rem;
+  }
+li:hover{
+  background-color: #DFFF00;
+}
+
+.img-bottom li{
+  background-color: #EEEEEE;
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.8rem;
+  border-radius: 20px;
+}
+/* .img-bottom img {
+  width: 100%;
+  height: auto;
+  z-index: 100;
+} */
+
+.page-middle{
+  position: relative;
+  top: 2rem;
+  opacity: 0;
+  width:0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+#gallery {
+  width:100%;
+  height: 100%;
+  border-radius: 15px;
+  border-style: none;
+}
+#canvas {
+  width:100%;
+  height:100%;
+  border-style: none;
+}
+
+
+.page-right {
+    /* background-color: grey; */
+    position: relative;
+    top: 2rem;
+    /* left: 2rem; */
+    /* width: calc(100% + 1.5rem); */
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* border-radius: 35px; */
+    /* box-shadow: 10px 5px 16px yellow; */
+    z-index: 99;
+    padding: 0;
+  }
+
+  .page-right::-webkit-scrollbar {
+    display: none;
+  }
+
+  canvas {
+    background-color: grey;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+  }
+
+
+
+</style>
+
+<head>
+  <!-- <img id="bottombar" src="visuals/bar.png">
+  <img id="topbar" src="visuals/bar.png"> -->
+</head>
+
+
+<body>
+
+  <div class="page-wrapper">
+
+    <nav class="mainnav">
+      <input type="checkbox" class="infobox">
+          <div class="buttons">
+              <a id="info" href="">info</a>
+          </div>
+          <div class="info">
+            <div>
+              <h3 class="italic">
+                NewHomeland.web
+              </h3>
+              <h3>is an interactive digital archive.</h3>
+              <br>
+              <p>
+                NewHomeland is an archival project inquiring into the open-access landscape images that are widely circulated online and frequently used on mass-produced home accessories. Focusing on the process of image reproduction, this project reflects on the mode of production enabled by contemporary Internet culture and highly democratized digital tools, as well as how they influence the creative practices outside of the mainstream visual culture.
+              </P>
+              <br>
+              <p>
+                Dec.2022 Chicago
+              </P>
+              <!-- <p>
+                “Landscape is a material ‘means’ like language or paint, embedded in a tradition of cultural significance and communication, a body of symbolic forms capable of being invoked and reshaped to express meanings and values.”——W.J.T Mitchell, Landscape and Power
+              </p> -->
+              <!-- NewHomeland is an ongoing project inquiring into the open-access landscape images that are widely circulated online and frequently used on mass-produced home accessories. Through the archive and reinterpretation of this phenomenon, this project hopes to unfold the discussion about the production chain of cheap artifacts and the social-material relations it might imply. -->
+            </div>
+          </div>
+          <div class="blur">
+          </div>
+    </nav>
+
+
+    <input type="checkbox" class="gallerybox">
+    <input type="checkbox" class="playbox">
+    <div class="buttons">
+        <a id="A" href="">gallery &#8631;</a>
+        <a id="B" href="">Play &#8630;</a>
+    </div>
+
+    <div class="page-left">
+      <!-- <img id="leftbar" src="visuals/leftbar.png"> -->
+      <!-- <img id="bottombar" src="visuals/bar.png"> -->
+      <!-- <img id="topbar" src="visuals/bar.png"> -->
+
+    <div class="instructions">
+      <!-- <h4>*instructions*</h4> -->
+      <span>
+        drag and move the images around!
+      </span>
+    </div>
+
+            <div class="img-top">
+              <!-- <button><img class="draggable" id="sun" src="imgs/sun1.png"></button> -->
+              <a href=""><img class="draggable" src="imgs/bird2.png"></a>
+              <a href=""><img class="draggable" src="imgs/butterfly.png"></a>
+              <a href=""><img class="draggable" src="imgs/haitun1.png"></a>
+              <a href=""><img class="draggable" src="imgs/tiane3.png"></a>
+              <a href=""><img class="draggable" src="imgs/bird1.png"></a>
+            </div>
+            <div class="img">
+                <div class="img-left">
+                  <ul data-current="0">
+                    <li><img class="draggable" src="imgs/sun1.png"></li>
+                    <li><img class="draggable" src="imgs/sun2.png"></li>
+                    <li><img class="draggable" src="imgs/sun3.png"></li>
+                    <li><img class="draggable" src="imgs/sun4.png"></li>
+                    <li><img class="draggable" src="imgs/sun6.png"></li>
+                    <li><img class="draggable" src="imgs/cloud2.png"></li>
+                    <li><img class="draggable" src="imgs/cloud1.png" ></li>
+                    <li><img class="draggable" src="imgs/cloud3.png" ></li>
+                    <li><img class="draggable" src="imgs/cloud4.png" ></li>
+                    <li><img class="draggable" src="imgs/bubble.png" ></li>
+                    <li><img class="draggable" src="imgs/rainbow1.png"></li>
+                  </ul>
+                </div>
+                <div class="img-right">
+                  <ul data-current="0">
+                    <li><img class="draggable" src="imgs/beach2.png" ></li>
+                    <li><img class="draggable" src="imgs/beach1.png" ></li>
+                    <li><img class="draggable" src="imgs/island1.png" ></li>
+                    <li><img class="draggable" src="imgs/tree1.png" ></li>
+                    <li><img class="draggable" src="imgs/tree2.png" ></li>
+                    <li><img class="draggable" src="imgs/grass1.png" ></li>
+                    <li><img class="draggable" src="imgs/bamboo1.png" ></li>
+                    <li><img class="draggable" src="imgs/bei.png"></li>
+                  </ul>
+                </div>
+            </div>
+            <div class="img-bottom">
+              <ul data-current="0">
+                <li><img class="draggable" src="imgs/road1.png" ></li>
+                <li><img class="draggable" src="imgs/road2.png" ></li>
+                <li><img class="draggable" src="imgs/road3.png" ></li>
+                <li><img class="draggable" src="imgs/road4.png" ></li>
+                <li><img class="draggable" src="imgs/road5.png" ></li>
+                <li><img class="draggable" src="imgs/lawn2.png" ></li>
+              </ul>
+            </div>
+
+      </div>
+
+    <div class="page-middle">
+      <iframe src="Gallery-small.html" title="description" id="gallery"></iframe>
+    </div>
+
+      <div class="page-right" id=saveCanvas>
+
+          <iframe src="canvas.html" id="canvas"></iframe>
+          <div class="controls">
+              <!-- <a id="C" href="">save</a> -->
+              <a id="D" href="">clear</a>
+          </div>
+
+     </div>
+
+  </div>
+
+</body>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+<script>
+
+//drag//
+  $('.draggable').draggable({helper: "clone"});
+  $('.draggable').bind('dragstop', function(event, ui)
+  { $(this).after($(ui.helper).clone().draggable());});
+  $( ".draggable" ).draggable({containment: "page-wrapper"
+  });
+
+</script>
