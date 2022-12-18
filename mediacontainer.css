@@ -1,0 +1,131 @@
+<style>
+
+.mediacontainer {
+  width: 1000vw;
+  height: 100vh;
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  z-index: 30;
+}
+.mediacontainer video,
+.mediacontainer img {
+  display: block;
+  position: absolute;
+}
+
+  #tree1{
+    /* position: absolute;
+    bottom: 23vh;
+    left: 25vw;
+    width: 30vw; */
+  }
+  #motion01 {
+    /* display: block;
+    position: relative;
+    left: 6vw;
+    top: 5vh;
+    width: 30vw;
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px; */
+  }
+
+  #sunmove {
+    display: block;
+    position: relative;
+    left: 50vw;
+    bottom: 10vhvh;
+    width: 20vw;
+    border-radius: 20px;
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
+
+  }
+  #window {
+    display: block;
+    position: relative;
+    left: 90vw;
+    bottom: 65vh;
+    width: 15vw;
+    resize: both;
+    z-index: 40;
+  }
+  #window:hover{
+    transform: scale(2.5);
+    transition: 3s;
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  #bamboo{
+    display: block;
+    position: absolute;
+    left: 100vw;
+    top: 35vh;
+    z-index: 2;
+    width: 20vw;
+  }
+  #land {
+    display: block;
+    position: absolute;
+
+  }
+
+  #sky{
+    display: block;
+    position: absolute;
+    left: 180vw;
+    top:0;
+    width: 75vw;
+    z-index: 1;
+    }
+  #heartcloud{
+      display: block;
+      position: absolute;
+      left: 210vw;
+      top:10vh;
+      width: 25vw;
+      z-index: 2;
+      animation-duration: 3s;
+      z-index: 40;
+    }
+  #sky-heart{
+    display: block;
+    position: absolute;
+    left: 200vw;
+    top:10vh;
+    width: 10vw;
+    z-index: 1;
+  }
+  #sky-rainbow{
+    display: block;
+    position: absolute;
+    left: 165vw;
+    top:30vh;
+    width: 20vw;
+    z-index: 1;
+    animation-duration: 5s;
+    }
+  #construction {
+    background: white;
+    display: block;
+    position: absolute;
+    left: 300vw;
+    top:30vh;
+    width: 50vw;
+    z-index: 5;
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 25px;
+  }
+
+  /* #island {
+    position: relative;
+    left: 8000px;
+    bottom: 350px;
+    z-index: 30;
+  }
+  #island:hover{
+    transform: scaleX(10);
+    transition: 5s;
+  } */
+
+</style>

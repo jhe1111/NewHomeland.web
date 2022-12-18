@@ -1,5 +1,7 @@
 <head>
      <link rel="stylesheet" href="scrollbar.css" />
+     <link rel="stylesheet" href="flickity.css" />
+     <script src="flickity.pkgd.js"></script>
 </head>
 
 <style>
@@ -24,6 +26,7 @@
   position: absolute;
   left: 0;
   top: 0;
+  cursor: grab;
 }
 
 img {
@@ -70,7 +73,7 @@ img {
 
 <div class="page-wrapper">
 
-      <div class="sky">
+      <div class="sky" data-flickity='{ "freeScroll": true, "contain": true, "prevNextButtons": false, "pageDots": false }'>
         <img id="sky" src="sky.png">
       </div>
 

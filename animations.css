@@ -1,0 +1,82 @@
+<style>
+
+.movingimg {
+  background-color: grey;
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+}
+.cloud {
+  position: relative;
+  top: 1rem;
+  animation-duration: 10s;
+}
+.XYfly {
+  transform-origin: center;
+  width: 400px;
+  height: auto;
+  animation-name: XYfly;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+#pigeon:hover{
+  rotate:1080deg;
+  transition: 1s;
+  cursor: grabbing;
+  z-index: 40;
+}
+@keyframes XYfly {
+    0% {transform: translateX(0) translateY(-10rem);}
+    25% {transform: translateX(50vw) translateY(60rem); }
+    50% {transform: translateX(100vw) translateY(-10rem); }
+    100% {transform: translateX(150vw) translateY(60rem);}
+}
+.float {
+  animation-name: float ;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  cursor: grabbing;
+  position: absolute;
+}
+@keyframes float {
+    0% {transform: translateX(0) translateY(0);}
+    50% {transform: translateX(-2rem) translateY(2rem); }
+    100% {transform: translateX(0) translateY(0);}
+}
+
+#Xfly {
+  animation-name: Xfly ;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+}
+@keyframes Xfly {
+  from {transform: translateX(120vw) translateY(0); }
+  to {transform: translateX(-20rem) translateY(0);}
+}
+
+#-Xfly {
+  animation-name: -Xfly ;
+  animation-duration: 25s;
+  animation-iteration-count: infinite;
+}
+@keyframes -Xfly {
+  from {transform: translateX(-20rem) translateY(0);}
+  to {transform: translateX(120vw) translateY(0); }
+}
+
+#butterfly:hover {
+  transform: scale(0.3);
+  transition: 1s;
+}
+.seabird {
+  position: absolute;
+  top: 2rem;
+}
+.fly hover{
+  animation-play-state: paused;
+}
+
+</style>

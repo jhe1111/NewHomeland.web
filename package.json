@@ -1,0 +1,11 @@
+{
+  "name": "flickity.v1.2.1",
+  "version": "1.2.1",
+  "description": "",
+  "main": "flickity.pkgd.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ykyuen",
+  "license": "ISC"
+}
