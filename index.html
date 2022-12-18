@@ -1,437 +1,409 @@
 <head>
-   <!-- <input type="range" min="1" max="100" value="1" class="slider" id="Size-Slider"> -->
-   <link rel="stylesheet" href="nav-buttons.css" />
-   <link rel="stylesheet" href="scrollbar0.css" />
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <link rel="stylesheet" href="scrollbar.css" />
+  <link rel="stylesheet" href="mediacontainer.css" />
+
+
 </head>
 
-<body>
-  <style>
-    body {
-      /* background-color: #EEEEEE */
-      /* background-image: url("visuals/grids.png");
-      background-repeat: repeat;
-      background-size: contain; */
+<script>
+    function coordinate(event) {
+        var x=event.clientX;
+        var y=event.clientY;
+        document.getElementById("X").value=x;
+        document.getElementById("Y").value=y;
     }
-    </style>
-</body>
+</script>
 
+<!-- //animations// -->
 <style>
-
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  list-style: none;
-  /* cursor: url('visuals/cursor1.png'),auto;
-  cursor: url('visuals/cursor1-.png'),auto; */
-}
-
-  .page-wrapper {
-    padding: 5rem;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    flex-shrink: 0;
-    justify-content: center;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    z-index: -99;
-  }
-  .info {
-    top: 30%;
-    left: 50%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-  }
-  .info::-webkit-scrollbar {
-    display: none;
-  }
-  .info h3 {
-    color: grey;
-    font-size: 15pt;
-    /* font-style: italic; */
-    text-align: left;
-  }
-  .info p {
-    color: grey;
-    font-size: 8pt;
-    font-style: italic;
-    text-align: left;
-  }
-  .italic {
-    font-style: italic;
-  }
-
-  .page-left {
-      resize:horizontal;
-    /* background-color: cyan; */
-    position: relative;
-    top: 2rem;
-    left: 0;
-    width: 40%;
-    max-height: 100%;
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    justify-content: space-around;
-    border-color: blue;
-    border-width: 2px;
-  }
-  .page-left img {
-    z-index: 100;
-  }
-
-  .page-left img:hover {
-    border-style: dotted;
-    border-color: #DFFF00;
-    border-width: 3px;
-    /* transform: rotateY(360deg);
-    transition: 3s; */
-  }
-
-  .page-left li:hover,
-  .page-left a:hover {
-     background-color: #DFFF00;
-  }
-
-  .instructions {
-    box-sizing: content-box;
-    background-color: #DFFF00;
-    position: relative;
-    top: 0;
-    max-width: 100%; height: auto;
-    border-radius: 16px;
-    text-align: left;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    font-family: 'Montserrat', sans-serif;
-    overflow: hidden;
-  }
-  /* .instructions h4 {
-    color: blue;
-  } */
-  .instructions span {
-    display: inline-block;
-    font-size: 10pt;
-    animation: scrolling-left1 8s linear infinite;
-  }
-  @keyframes scrolling-left1 {
-    0% {transform: translateX(100%);
-    -webkit-transform: translateX(100%);}
-    100% {transform: translateX(-100%);
-    -webkit-transform: translateX(-100%);}
-  }
-
-  .img-top,
-  .img-bottom  {
-      background-image: url("visuals/grids.png");
-      background-repeat: repeat;
-      background-size: cover;
-      margin-bottom: 0;
-      padding: 0.5rem;
-      width: 100%;
-      height: 35%;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      overflow: auto;
-      border-radius: 15px;
-    }
-  .img-top {
-    box-sizing: content-box;
-    padding-bottom: 1.5rem;
-    height: auto;
-    overflow: hidden;
-  }
-
-  .img-top a {
-      min-width: 15%;
-      height: 50px;
-      border-radius: 20px;
-    }
-  .img-top img,
-  .img-bottom img {
-      max-width: 100%;
-      max-height:100%;
-      z-index: 100;
-      border-radius: 20px;
-      cursor: grab;
-    }
-
-.img {
-    background-image: url("visuals/grids.png");
-    background-repeat: repeat;
-    background-size: cover;
-    padding: 0.8rem;
-    display: flex;
-    flex-direction: row;
-    flex: 1 0 auto;
-    justify-content:space-between;
-    position: relative;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    max-width: 100%;
-    max-height: 50%;
-    border-radius: 15px;
-  }
-
-.img-left {
-    width: 55%;
-    height: 100%;
-    margin-right: 0.8rem;
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    direction: rtl;
-  }
-.img-right {
+  .movingimg {
+    position: fixed;
+    top:0;
+    left:0;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    z-index: 20;
   }
-.img li {
-    background-color: #EEEEEE;
-    width: 100%;
-    height: auto;
-    margin-bottom: 0.8rem;
-    border-radius: 20px;
+  .rotate {
+    animation-name: Yrotate;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
   }
-.img-left li {
-    width: 90%;
-    margin-left: 0.5rem;
-    border-radius: 25px;
+  @keyframes Yrotate {
+    from {transform: rotateY(0);}
+    to {transform: rotateY(360deg);}
   }
-.img img {
-    width: 100%;
-    height: auto;
-    border-radius: 25px;
-    z-index: 100;
-    cursor: grab;
-    resize: both;
-  }
-
-.img-right li {
-    width: 95%;
-    height: auto;
-    margin-right: 0.5rem;
-  }
-li:hover{
-  background-color: #DFFF00;
-}
-
-.img-bottom li{
-  background-color: #EEEEEE;
-  width: 100%;
-  height: auto;
-  margin-bottom: 0.8rem;
-  border-radius: 20px;
-}
-/* .img-bottom img {
-  width: 100%;
-  height: auto;
-  z-index: 100;
-} */
-
-.page-middle{
-  position: relative;
-  top: 2rem;
-  opacity: 0;
-  width:0;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-#gallery {
-  width:100%;
-  height: 100%;
-  border-radius: 15px;
-  border-style: none;
-}
-#canvas {
-  width:100%;
-  height:100%;
-  border-style: none;
-}
-
-
-.page-right {
-    /* background-color: grey; */
-    position: relative;
-    top: 2rem;
-    /* left: 2rem; */
-    /* width: calc(100% + 1.5rem); */
-    width: 100%;
-    height: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    /* border-radius: 35px; */
-    /* box-shadow: 10px 5px 16px yellow; */
-    z-index: 99;
-    padding: 0;
-  }
-
-  .page-right::-webkit-scrollbar {
-    display: none;
-  }
-
-  canvas {
-    background-color: grey;
+  .float {
+    animation-name: float ;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    cursor: grabbing;
     position: absolute;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -10;
+  }
+    @keyframes float {
+        0% {transform: translateX(0) translateY(0);}
+        50% {transform: translateX(-2rem) translateY(2rem); }
+        100% {transform: translateX(0) translateY(0);}
+    }
+  .cloud {
+    position: relative;
+    top: 1rem;
+    animation-duration: 10s;
+  }
+  .XYfly {
+    transform-origin: center;
+    width: 400px;
+    height: auto;
+    animation-name: XYfly;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+  }
+    @keyframes XYfly {
+        0% {transform: translateX(0vw) translateY(-50vh);}
+        25% {transform: translateX(25vw) translateY(60vh); }
+        50% {transform: translateX(50vw) translateY(-50vh); }
+        75% {transform: translateX(75vw) translateY(50vh);}
+        100% {transform: translateX(100vw) translateY(-90vh);}
+    }
+
+  .Xfly {
+      animation-name: Xfly ;
+      animation-duration: 15s;
+      animation-iteration-count: infinite;
+    }
+    @keyframes Xfly {
+      from {transform: translateX(120vw) translateY(0); }
+      to {transform: translateX(-20rem) translateY(0);}
+    }
+  .-Xfly {
+      animation-name: -Xfly ;
+      animation-duration: 25s;
+      animation-iteration-count: infinite;
+    }
+    @keyframes -Xfly {
+        from {transform: translateX(-20rem) translateY(0);}
+        to {transform: translateX(120vw) translateY(0); }
+      }
+
+  #pigeon:hover{
+    rotate:1080deg;
+    transition: 1s;
+    cursor: grabbing;
+    z-index: 40;
+    transition-timing-function: ease;
   }
 
+  #butterfly:hover {
+    transform: scale(0.3);
+    transition: 1s;
+    }
+  .seabird {
+    position: absolute;
+    animation-duration: 10s;
+    top: 2rem;
+  }
+  .fly:hover{
+    animation-play-state: paused;
+  }
+  .rotate:hover{
+    transform: rotate(720deg);
+    transition: 2s;
+  }
+  #sun {
+      display: block;
+      position: absolute;
+      top: -10rem;
+      animation-name: sunrise;
+      animation-duration: 20s;
+      animation-iteration-count: infinite;
+      z-index: -1;
+    }
+    @keyframes sunrise {
+      0% {transform: translateX(-20vw) translateY(75vh);}
+      20% {transform: translateX(5vw) translateY(15vh);}
+      40% {transform: translateX(15vw) translateY(10vh);}
+      50% {transform: translateX(50vw) translateY(10vh);}
+      60% {transform: translateX(75vw) translateY(10vh);}
+      80% {transform: translateX(90vw) translateY(15vh);}
+      100% {transform: translateX(120vw) translateY(75vh);}
+    }
+  #-butterfly {
+    transform: scaleX(-1);
+    animation-duration: 20s;
+  }
 
+ #return {
+   width: 100px;
+   z-index: 40;
+   background-color: grey;
+   color: red;
+ }
+ .Xmove {
+   animation-name: Xmove;
+   animation-duration: 2s;
+   animation-iteration-count: infinite;
+ }
+ @keyframes Xmove {
+   0% {transform: translateX(0) translateY(0);}
+   50% {transform: translateX(3rem) translateY(0);}
+   100% {transform: translateX(0rem) translateY(0);}
+ }
+ .pigeonXmove {
+   animation-name: pigeonXmove;
+   animation-duration: 50s;
+   animation-iteration-count: infinite;
+ }
+ @keyframes pigeonXmove {
+   0% {transform: translateX(-70vw) translateY(0);}
+   35% {transform: translateX(500vw) translateY(0);}
+   75% {transform: translateX(900vw) translateY(0);}
+   100% {transform: translateX(-70vw) translateY(0);}
+ }
 
 </style>
 
-<head>
-  <!-- <img id="bottombar" src="visuals/bar.png">
-  <img id="topbar" src="visuals/bar.png"> -->
-</head>
+<style>
+
+  * {
+    box-sizing: border-box;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  img {
+    cursor: grab;
+    z-index: 10;
+  }
+
+  .page-wrapper {
+    width: 1000vw;
+    height: 100vh;
+    background-image:
+    linear-gradient(45deg, #EEEEEE 25%, transparent 0, transparent 75%, #EEEEEE 0),
+    linear-gradient(45deg, #EEEEEE 25%, transparent 0, transparent 75%, #EEEEEE 0);
+    background-position: 0 0, 15px 15px;
+    background-size: 30px 30px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+
+  .mousedata {
+    position: fixed;
+    right:5rem;
+    top: 2rem;
+    font-size: 35pt;
+    font-family: sans-serif;
+    color: blue;
+    z-index: 40;
+  }
+  .mousedata input {
+    border: none;
+    background: none;
+    width: 7rem;
+    height: 3rem;
+    font-size: 35pt;
+    text-align: left;
+  }
+
+  .long {
+    background-image: url("visuals/long-2.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom left;
+    display: inline-block;
+    width: 1000%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-attachment: scroll;
+    z-index: 2;
+  }
+
+  #start {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+  .draggables {
+    position: fixed;
+    left: 2rem;
+    bottom: 2rem;
+    /* background: grey; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    /* border-radius: 15px; */
+    width: 100vw;
+    height: 100px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    z-index: 50;
+    padding-bottom: 1.5rem;
+    resize: both;
+  }
+  .draggables a {
+      box-sizing: border-box;
+      width: auto;
+      height: 100px;
+      border-radius: 20px;
+    }
+  .draggables img {
+      width: auto;
+      height: 100%;
+        border-radius: 20px;
+        cursor: grab;
+        z-index: 50;
+      }
+  .draggables img:hover {
+        border-style: dotted;
+        border-color: #DFFF00;
+        border-width: 3px;
+      }
+  .draggables::-webkit-scrollbar {
+        display: none;
+      }
+  .draggable:hover{
+    border-style: dotted;
+    border-color: blue;
+    /* border-color: #DFFF00; */
+    border-width: 5px;
+  }
+
+  #return:hover{
+    transform: rotateY(360deg);
+    transition: 2s;
+  }
+
+</style>
 
 
-<body>
+<div class="page-wrapper">
 
-  <div class="page-wrapper">
+  <a href="#start" id="return" style="background:none; position:fixed; right:1rem; bottom:1rem; font-size: 50pt; font-style:serif; color:blue;"> &#8630; </a>
 
-    <nav class="mainnav">
-      <input type="checkbox" class="infobox">
-          <div class="buttons">
-              <a id="info" href="">info</a>
-          </div>
-          <div class="info">
-            <div>
-              <h3 class="italic">
-                NewHomeland.web
-              </h3>
-              <h3>is an interactive digital archive.</h3>
-              <br>
-              <p>
-                NewHomeland is an archival project inquiring into the open-access landscape images that are widely circulated online and frequently used on mass-produced home accessories. Focusing on the process of image reproduction, this project reflects on the mode of production enabled by contemporary Internet culture and highly democratized digital tools, as well as how they influence the creative practices outside of the mainstream visual culture.
-              </P>
-              <br>
-              <p>
-                Dec.2022 Chicago
-              </P>
-              <!-- <p>
-                “Landscape is a material ‘means’ like language or paint, embedded in a tradition of cultural significance and communication, a body of symbolic forms capable of being invoked and reshaped to express meanings and values.”——W.J.T Mitchell, Landscape and Power
-              </p> -->
-              <!-- NewHomeland is an ongoing project inquiring into the open-access landscape images that are widely circulated online and frequently used on mass-produced home accessories. Through the archive and reinterpretation of this phenomenon, this project hopes to unfold the discussion about the production chain of cheap artifacts and the social-material relations it might imply. -->
-            </div>
-          </div>
-          <div class="blur">
-          </div>
-    </nav>
+  <div class="long"></div>
 
+  <div class="mediacontainer">
 
-    <input type="checkbox" class="gallerybox">
-    <input type="checkbox" class="playbox">
-    <div class="buttons">
-        <a id="A" href="">gallery &#8631;</a>
-        <a id="B" href="">Play &#8630;</a>
-    </div>
-
-    <div class="page-left">
-      <!-- <img id="leftbar" src="visuals/leftbar.png"> -->
-      <!-- <img id="bottombar" src="visuals/bar.png"> -->
-      <!-- <img id="topbar" src="visuals/bar.png"> -->
-
-    <div class="instructions">
-      <!-- <h4>*instructions*</h4> -->
-      <span>
-        drag and move the images around!
-      </span>
-    </div>
-
-            <div class="img-top">
-              <!-- <button><img class="draggable" id="sun" src="imgs/sun1.png"></button> -->
-              <a href=""><img class="draggable" src="imgs/bird2.png"></a>
-              <a href=""><img class="draggable" src="imgs/butterfly.png"></a>
-              <a href=""><img class="draggable" src="imgs/haitun1.png"></a>
-              <a href=""><img class="draggable" src="imgs/tiane3.png"></a>
-              <a href=""><img class="draggable" src="imgs/bird1.png"></a>
-            </div>
-            <div class="img">
-                <div class="img-left">
-                  <ul data-current="0">
-                    <li><img class="draggable" src="imgs/sun1.png"></li>
-                    <li><img class="draggable" src="imgs/sun2.png"></li>
-                    <li><img class="draggable" src="imgs/sun3.png"></li>
-                    <li><img class="draggable" src="imgs/sun4.png"></li>
-                    <li><img class="draggable" src="imgs/sun6.png"></li>
-                    <li><img class="draggable" src="imgs/cloud2.png"></li>
-                    <li><img class="draggable" src="imgs/cloud1.png" ></li>
-                    <li><img class="draggable" src="imgs/cloud3.png" ></li>
-                    <li><img class="draggable" src="imgs/cloud4.png" ></li>
-                    <li><img class="draggable" src="imgs/bubble.png" ></li>
-                    <li><img class="draggable" src="imgs/rainbow1.png"></li>
-                  </ul>
-                </div>
-                <div class="img-right">
-                  <ul data-current="0">
-                    <li><img class="draggable" src="imgs/beach2.png" ></li>
-                    <li><img class="draggable" src="imgs/beach1.png" ></li>
-                    <li><img class="draggable" src="imgs/island1.png" ></li>
-                    <li><img class="draggable" src="imgs/tree1.png" ></li>
-                    <li><img class="draggable" src="imgs/tree2.png" ></li>
-                    <li><img class="draggable" src="imgs/grass1.png" ></li>
-                    <li><img class="draggable" src="imgs/bamboo1.png" ></li>
-                    <li><img class="draggable" src="imgs/bei.png"></li>
-                  </ul>
-                </div>
-            </div>
-            <div class="img-bottom">
-              <ul data-current="0">
-                <li><img class="draggable" src="imgs/road1.png" ></li>
-                <li><img class="draggable" src="imgs/road2.png" ></li>
-                <li><img class="draggable" src="imgs/road3.png" ></li>
-                <li><img class="draggable" src="imgs/road4.png" ></li>
-                <li><img class="draggable" src="imgs/road5.png" ></li>
-                <li><img class="draggable" src="imgs/lawn2.png" ></li>
-              </ul>
-            </div>
-
-      </div>
-
-    <div class="page-middle">
-      <iframe src="Gallery-small.html" title="description" id="gallery"></iframe>
-    </div>
-
-      <div class="page-right" id=saveCanvas>
-
-          <iframe src="canvas.html" id="canvas"></iframe>
-          <div class="controls">
-              <!-- <a id="C" href="">save</a> -->
-              <a id="D" href="">clear</a>
-          </div>
-
-     </div>
+    <img id="start" src="imgs/bubble.png" width="100px">
+    <video id="motion01"  autoplay muted loop style="width: 50vw; left: 10vw; top: 5vh;
+        box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 20px; z-index=10"; >
+      <source src="motion/composition1-scale.mp4" type="video/mp4">
+    </video>
+    <img src="imgs/grass.png" style="width:50vw; left: 30vw; bottom: 20vh">
+    <img class="draggable" src="imgs/grass.png" style="width:30vw; left: 10vw; bottom: 6vh">
+    <img class="draggable Xmove" src="imgs/butterfly-flower.png" style="width:30vw; left: 30vw; bottom: 6vh;">
+    <img class="pigeonXmove" src="imgs/pigeon1.png" style="width:70vw; left: 70vw; top:-30vh; z-index: 0;">
+    <!-- <video id="sunmove" autoplay muted loop>
+      <source src="motion/sun-test.mp4" type="video/mp4">
+    </video> -->
+    <!-- <div id="window">
+      <a href="index.html"><img src="imgs/windows.png" width="100%"></a>
+    </div> -->
+    <!-- <img id="land" src="imgs/land1.jpg" style="width: 50vw; left: 120vw; top: 15vh; z-index: 0;"> -->
+    <img class="draggable" src="imgs/pigeon1.png" style="width:7vw; left: 120vw; top:30vh;">
+    <img class="draggable" src="imgs/-pigeon1.png" style="width:7vw; left: 127vw; top:30vh;">
+    <img class="-Xfly float" src="imgs/group-pigeon.png" style="width:30vw; left: 150vw; top: 10vh">
+    <!-- <div id="resizable" style="resize:horizontal; position: absolute; left: 120vw; bottom:30vh; width:30vw; background: cyan; z-index: 40;"> <img src="imgs/road1.png" style="width: 100%; "> </div> -->
+    <img class="rotate" id="bamboo" src="imgs/bamboo1.png">
+    <img id="sky" src="imgs/sky1.jpg">
+    <img class="float" id="heartcloud" src="imgs/cloud1.png">
+    <img id="sky-heart" src="imgs/sky-heart.jpeg">
+    <img class="float" id="sky-rainbow" src="imgs/sky-rainbow.jpeg" style="
+        left: 165vw;
+        top:30vh;
+        width: 20vw;
+        z-index: 1;
+        animation-duration: 5s;
+        box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
+      ">
+    <img class="rotate" id="tree1" src="imgs/tree2.png" style="width:30vw; bottom: 23vh; left: 260vw;">
+    <img id="construction" src="imgs/construction.png">
 
   </div>
 
-</body>
+    <img class="draggable float" id="dragbutterfly" src="imgs/butterfly.png" style="width: 100px; position: absolute; top:50vh; left: 60vw;">
+    <img class="draggable float" id="dragbutterfly" src="imgs/butterfly.png" style="width: 70px; position: absolute; top:50vh; left: 68vw;">
+    <img class="draggable float" id="dragbutterfly" src="imgs/butterfly.png" style="width: 40px; position: absolute; top:50vh; left: 74vw;">
 
+  <body onmousemove="coordinate(event)" >
+
+  <!-- <div class="movingimg"> -->
+
+        <div id="cloud">
+          <img class="float -Xfly" src="imgs/cloud2.png">
+        </div>
+
+      <div class="XYfly rotate" style="position: absolute; left: 80vw; top:0 ; width: 400px; z-index: 20;">
+        <img id="pigeon" src="imgs/pigeon1.png">
+        </div>
+
+      <div class="seabird Xfly">
+        <img class="float" src="imgs/bird2.png" width="100px">
+      </div>
+
+      <!-- <div class="float" id="butterfly">
+        <img id="-Xfly" src="imgs/butterfly.png" width="200px">
+      </div>
+      <div class="float" id="-butterfly">
+          <img id="Xfly" src="imgs/butterfly.png" width="100px">
+      </div> -->
+
+      <!-- <div> <img id="sun" width="500px" src="imgs/sun6.png"> </div> -->
+
+
+  <!-- </div> -->
+
+  <!-- <div class="draggables">
+
+    <a href=""><img class="draggable" src="imgs/bird2.png"></a>
+    <a href=""><img class="draggable" src="imgs/butterfly.png"></a>
+    <a href=""><img class="draggable" src="imgs/pigeon1.png"></a>
+    <a href=""><img class="draggable" src="imgs/tiane1.png"></a>
+    <a href=""><img class="draggable" src="imgs/haitun1.png"></a>
+    <a href=""><img class="draggable" src="imgs/tiane2.png"></a>
+    <a href=""><img class="draggable" src="imgs/tiane3.png"></a>
+    <a href=""><img class="draggable" src="imgs/bird1.png"></a>
+
+  </div> -->
+
+    <div class="mousedata">
+      X:
+      <input type="text" id="X">
+      Y:
+      <input type="text" id="Y">
+    </div>
+
+  </body>
+
+</div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <script>
-
-//drag//
   $('.draggable').draggable({helper: "clone"});
   $('.draggable').bind('dragstop', function(event, ui)
   { $(this).after($(ui.helper).clone().draggable());});
-  $( ".draggable" ).draggable({containment: "page-wrapper"
-  });
-
+  // $( ".draggable" ).draggable({containment: "page-wrapper"
+  // });
+  $( function() {
+  $( "#resizable" ).resizable();
+} );
 </script>
