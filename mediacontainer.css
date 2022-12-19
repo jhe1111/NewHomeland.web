@@ -88,14 +88,10 @@
       animation-duration: 3s;
       z-index: 40;
     }
-  #sky-heart{
+  /* #sky-heart{
     display: block;
     position: absolute;
-    left: 200vw;
-    top:10vh;
-    width: 10vw;
-    z-index: 1;
-  }
+  } */
   #sky-rainbow{
     display: block;
     position: absolute;
@@ -105,7 +101,7 @@
     z-index: 1;
     animation-duration: 5s;
     }
-  #construction {
+  /* #construction {
     background: white;
     display: block;
     position: absolute;
@@ -116,7 +112,7 @@
     box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 25px;
   }
-
+ */
   /* #island {
     position: relative;
     left: 8000px;

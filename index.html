@@ -95,7 +95,6 @@
     z-index: 40;
     transition-timing-function: ease;
   }
-
   #butterfly:hover {
     transform: scale(0.3);
     transition: 1s;
@@ -128,19 +127,19 @@
       50% {transform: translateX(50vw) translateY(10vh);}
       60% {transform: translateX(75vw) translateY(10vh);}
       80% {transform: translateX(90vw) translateY(15vh);}
-      100% {transform: translateX(120vw) translateY(75vh);}
+      100% {transform: translateX(190vw) translateY(150vh);}
     }
   #-butterfly {
     transform: scaleX(-1);
     animation-duration: 20s;
   }
 
- #return {
+ /* #return {
    width: 100px;
    z-index: 40;
    background-color: grey;
    color: red;
- }
+ } */
  .Xmove {
    animation-name: Xmove;
    animation-duration: 2s;
@@ -198,6 +197,70 @@
     overflow-y: hidden;
   }
 
+  #drag-unfold {
+    position: fixed;
+    left: 2rem;
+    bottom: 2rem;
+    width: 100px;
+    height: 100px;
+    z-index: 45;
+    opacity: 0;
+    cursor: pointer;
+  }
+  #unfold-ui {
+    position: fixed;
+    /* background-color:#DFFF00; */
+    font-size: 50pt;
+    text-align: center;
+    color:blue;
+    left: 2rem;
+    bottom: 2rem;
+    width: 100px;
+    height: 100px;
+    padding: 0.5rem;
+    padding-left: 0.7rem;
+    z-index: 44;
+    border-radius: 30px;
+  }
+  #drag-unfold:checked ~.draggables{
+    width: 50vw;
+    overflow: visible;
+    transition: 1s;
+  }
+  #drag-unfold:hover ~ #unfold-ui{
+    background-color: #DFFF00;
+  }
+  #drag-unfold:checked ~ #unfold-ui{
+    background-color: #DFFF00;
+    transform: rotate(-180deg);
+    transition: 1s;
+  }
+  #drag-unfold:checked ~.draggables a{
+    width: 90px;
+    transition:1s;
+  }
+
+  #return{
+    position: fixed;
+    font-size: 40pt;
+    text-align: center;
+    color:blue;
+    right: 2rem;
+    bottom: 2rem;
+    width: 100px;
+    height: 100px;
+    padding-top: 1rem;
+    /* padding: 0.5rem;
+    padding-left: 0.7rem; */
+    z-index: 44;
+    border-radius: 30px;
+    text-decoration: none;
+  }
+  #return:hover{
+    background-color: #DFFF00;
+  }
+
+
   .mousedata {
     position: fixed;
     right:5rem;
@@ -231,38 +294,49 @@
     z-index: 2;
   }
 
-  #start {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
   .draggables {
     position: fixed;
-    left: 2rem;
+    left: 10rem;
     bottom: 2rem;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
     /* background: grey; */
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-    align-content: center;
-    /* border-radius: 15px; */
-    width: 100vw;
+    align-content: center; */
+    border-radius: 20px;
+    width: 0px;
     height: 100px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    z-index: 50;
-    padding-bottom: 1.5rem;
-    resize: both;
+    z-index: 44;
+    /* resize: both; */
+    /* padding-top:0.5rem;
+    padding-bottom:0.5rem; */
+    overflow: hidden;
+  }
+
+  #draggables {
+    /* background: blue; */
+    overflow-x:scroll;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    margin: 0.5rem;
   }
   .draggables a {
+      /* background: blue; */
       box-sizing: border-box;
-      width: auto;
-      height: 100px;
+      width: 0;
+      height: 85px;
       border-radius: 20px;
     }
   .draggables img {
+    border-style: none;
       width: auto;
       height: 100%;
         border-radius: 20px;
@@ -272,7 +346,7 @@
   .draggables img:hover {
         border-style: dotted;
         border-color: #DFFF00;
-        border-width: 3px;
+        border-width: 5px;
       }
   .draggables::-webkit-scrollbar {
         display: none;
@@ -284,17 +358,12 @@
     border-width: 5px;
   }
 
-  #return:hover{
-    transform: rotateY(360deg);
-    transition: 2s;
-  }
-
 </style>
 
 
 <div class="page-wrapper">
 
-  <a href="#start" id="return" style="background:none; position:fixed; right:1rem; bottom:1rem; font-size: 50pt; font-style:serif; color:blue;"> &#8630; </a>
+  <a href="#start" id="return" style=" position:fixed;font-style:serif; color:blue;"> &#8630; </a>
 
   <div class="long"></div>
 
@@ -324,23 +393,40 @@
     <img class="rotate" id="bamboo" src="imgs/bamboo1.png">
     <img id="sky" src="imgs/sky1.jpg">
     <img class="float" id="heartcloud" src="imgs/cloud1.png">
-    <img id="sky-heart" src="imgs/sky-heart.jpeg">
-    <img class="float" id="sky-rainbow" src="imgs/sky-rainbow.jpeg" style="
-        left: 165vw;
-        top:30vh;
-        width: 20vw;
-        z-index: 1;
-        animation-duration: 5s;
-        box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
-      ">
+    <img src="imgs/sky-heart.jpeg" style="left:200vw;top:10vh;width:10vw;z-index:1;
+          box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);">
+    <video autoplay muted loop style="width:50vw; left:130vw; top:0vh;
+          /* box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19); */
+          border-radius:20px; z-index=30;">
+      <source src="motion/rotate_pigeon.mp4" type="video/mp4">
+    </video>
+    <video autoplay muted loop style="width:50vw; left:300vw; top:0vh;
+          /* box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19); */
+          border-radius:20px; z-index=1;">
+      <source src="motion/ongrid.mp4" type="video/mp4">
+    </video>
+    <video autoplay muted loop style="width:20vw; left:360vw; top:20vh;
+          box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);">
+      <source src="motion/pigeonfly.mp4" type="video/mp4">
+    </video>
+    <iframe id="draggable" src="collage.html" style="position:absolute; left:400vw; top: 2rem; width: 90vw; height: 80vh; z-index:45; border: none; overflow:visible;"></iframe>
+    <img class="float" src="imgs/sky-rainbow.jpeg" style="left: 300vw;top:30vh;width: 10vw;z-index: 1; animation-duration: 5s;
+        box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);">
     <img class="rotate" id="tree1" src="imgs/tree2.png" style="width:30vw; bottom: 23vh; left: 260vw;">
-    <img id="construction" src="imgs/construction.png">
-
+    <div> <img id="sun" width="500px" src="imgs/sun4.png" style="left:130vw; z-index:40;"> </div>
+    <video autoplay muted loop style="width:75vw; left:540vw; top:-3vh;">
+      <source src="motion/motion_bird.mp4" type="video/mp4">
+    </video>
+    <img src="imgs/construction.png" style="background-color: white; left:800vw; top:50vh; width: 30vw;">
   </div>
 
     <img class="draggable float" id="dragbutterfly" src="imgs/butterfly.png" style="width: 100px; position: absolute; top:50vh; left: 60vw;">
     <img class="draggable float" id="dragbutterfly" src="imgs/butterfly.png" style="width: 70px; position: absolute; top:50vh; left: 68vw;">
     <img class="draggable float" id="dragbutterfly" src="imgs/butterfly.png" style="width: 40px; position: absolute; top:50vh; left: 74vw;">
+    <img class="draggable Xmove" id="dragbutterfly" src="imgs/tiane1.png" style="width: 300px; position: absolute; bottom: 20vh; left: 700vw;">
+    <img class="draggable Xmove" id="dragbutterfly" src="imgs/tiane1.png" style="width: 100px; position: absolute; bottom: 30vh; left: 750vw;">
+    <img class="draggable" id="dragbutterfly" src="imgs/grass.png" style="width: 30vw; position: absolute; bottom: 35vh; left: 660vw;">
+
 
   <body onmousemove="coordinate(event)" >
 
@@ -365,23 +451,22 @@
           <img id="Xfly" src="imgs/butterfly.png" width="100px">
       </div> -->
 
-      <!-- <div> <img id="sun" width="500px" src="imgs/sun6.png"> </div> -->
-
-
   <!-- </div> -->
 
-  <!-- <div class="draggables">
-
+  <input id="drag-unfold" type="checkbox"></input>
+  <div id="unfold-ui">></div>
+  <div class="draggables">
+    <ul id="draggables">
     <a href=""><img class="draggable" src="imgs/bird2.png"></a>
     <a href=""><img class="draggable" src="imgs/butterfly.png"></a>
     <a href=""><img class="draggable" src="imgs/pigeon1.png"></a>
-    <a href=""><img class="draggable" src="imgs/tiane1.png"></a>
+    <a href=""><img class="draggable" src="imgs/tiger.png"></a>
     <a href=""><img class="draggable" src="imgs/haitun1.png"></a>
-    <a href=""><img class="draggable" src="imgs/tiane2.png"></a>
+    <!-- <a href=""><img class="draggable" src="imgs/tiane2.png"></a> -->
     <a href=""><img class="draggable" src="imgs/tiane3.png"></a>
     <a href=""><img class="draggable" src="imgs/bird1.png"></a>
-
-  </div> -->
+    </ul>
+  </div>
 
     <div class="mousedata">
       X:
@@ -406,4 +491,9 @@
   $( function() {
   $( "#resizable" ).resizable();
 } );
+
+$( function() {
+  $( "#draggable" ).draggable();
+} );
+
 </script>
