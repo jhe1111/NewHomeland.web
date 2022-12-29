@@ -1,0 +1,135 @@
+<head>
+  <link rel="stylesheet" href="scrollbar.css" />
+  <link rel="stylesheet" href="mediacontainer.css" />
+  <link rel="stylesheet" href="nav-buttons.css" />
+  <link rel="stylesheet" href="animation.css" />
+</head>
+
+<style>
+  body {
+    width: 250vw; height: 100vh;
+    overflow-y: hidden;
+    overflow-x: scroll;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  .geziarchive {
+    background-color: grey;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 150vw;
+    height: 100px;
+    z-index: 2;
+    overflow-x: scroll;
+  }
+  .geziarchive ul {
+    display: flex;
+    flex-direction:row;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    align-items: flex-start;
+  }
+  .geziarchive li {
+    min-width: 100px;
+    height: 100px;
+  }
+  .geziarchive img {
+    width: 100%;
+    height: 100%;
+  }
+  @keyframes scrolling-left1 {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(-50%);}
+  }
+  /* img, video { position: absolute; z-index: 10;} */
+  #sky-background { z-index:0; }
+
+  .pigeon:hover{
+    rotate:1080deg;
+    transition: 1s;
+    cursor: url(visuals/cursor/rotate-yellow.png), default;
+    transition-timing-function: ease;
+  }
+
+</style>
+
+<body>
+
+  <div class="geziarchive">
+    <ul style="animation-name:scrolling-left1; animation-duration: 10s; animation-iteration-count: infinite;">
+      <li><img src="imgs/pigeons/1.png"></li>
+      <li><img src="imgs/pigeons/2.png"></li>
+      <li><img src="imgs/pigeons/3.png"></li>
+      <li><img src="imgs/pigeons/4.png"></li>
+      <li><img src="imgs/pigeons/5.png"></li>
+      <li><img src="imgs/pigeons/6.png"></li>
+      <li><img src="imgs/pigeons/7.png"></li>
+      <li><img src="imgs/pigeons/8.png"></li>
+      <li><img src="imgs/pigeons/9.png"></li>
+      <li><img src="imgs/pigeons/10.png"></li>
+      <li><img src="imgs/pigeons/11.png"></li>
+      <li><img src="imgs/pigeons/12.png"></li>
+      <li><img src="imgs/pigeons/13.png"></li>
+      <li><img src="imgs/pigeons/14.png"></li>
+      <li><img src="imgs/pigeons/15.png"></li>
+      <li><img src="imgs/pigeons/16.png"></li>
+      <li><img src="imgs/pigeons/17.png"></li>
+      <li><img src="imgs/pigeons/18.png"></li>
+      <li><img src="imgs/pigeons/19.png"></li>
+      <li><img src="imgs/pigeons/20.png"></li>
+      <li><img src="imgs/pigeons/1.png"></li>
+      <li><img src="imgs/pigeons/2.png"></li>
+      <li><img src="imgs/pigeons/3.png"></li>
+      <li><img src="imgs/pigeons/4.png"></li>
+      <li><img src="imgs/pigeons/5.png"></li>
+      <li><img src="imgs/pigeons/6.png"></li>
+      <li><img src="imgs/pigeons/7.png"></li>
+      <li><img src="imgs/pigeons/8.png"></li>
+      <li><img src="imgs/pigeons/9.png"></li>
+      <li><img src="imgs/pigeons/10.png"></li>
+      <li><img src="imgs/pigeons/11.png"></li>
+      <li><img src="imgs/pigeons/12.png"></li>
+      <li><img src="imgs/pigeons/13.png"></li>
+      <li><img src="imgs/pigeons/14.png"></li>
+      <li><img src="imgs/pigeons/15.png"></li>
+      <li><img src="imgs/pigeons/16.png"></li>
+      <li><img src="imgs/pigeons/17.png"></li>
+      <li><img src="imgs/pigeons/18.png"></li>
+      <li><img src="imgs/pigeons/19.png"></li>
+      <li><img src="imgs/pigeons/20.png"></li>
+    </ul>
+
+  </div>
+
+  <img id="sky-background" src="imgs/sky1.jpg" style="position: absolute; left: 0; top:0; width:250vw; height: 100vh; z-index:0;">
+  <img src="imgs/sun3.png" style="left:0vw; top: 10vh; width: 50vw; height: auto;">
+  <!-- <img class="movingimg -Xfly" src="imgs/bird2.png" width="100px" style="left: 0; top: 2rem; animation-duration: 30s; z-index:12;"> -->
+
+  <video autoplay muted loop style="left:65vw; top:10vh; width:75vw; height: auto;">
+    <source src="motion/motion_bird.mp4" type="video/mp4">
+  </video>
+
+  <img class="float" src="imgs/cloud1.png" style="left: 15vw; top:30vh; width:20vw; z-index: 2; animation-duration: 3s;">
+  <img class="pigeon float" src="imgs/pigeon1.png" style="left: 40vw; top:30vh; width:30vw;">
+  <img class="pigeon float" src="imgs/-pigeon1.png" style="left: 140vw; top:30vh; width:30vw;">
+  <img class="float" src="imgs/cloud1.png" style="left: 180vw; top:10vh; width:40vw; z-index: 2; animation-duration: 3s;">
+
+</body>
+
+<!-- Javascripts -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+            crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="jquery.ui.rotatable.js"></script>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css">
+    <link rel="stylesheet" href="drag-scale-rotate.css">
+    <script src="interaction.js"></script>

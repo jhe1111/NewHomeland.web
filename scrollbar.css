@@ -9,7 +9,7 @@ background: #888;
 }
 ::-webkit-scrollbar-thumb:hover {
 background: #DFFF00;
-cursor: grab;
+cursor: url(visuals/cursor/poinster.png), pointer;
 }
 
 .categories::-webkit-scrollbar {

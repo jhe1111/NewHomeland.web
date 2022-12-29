@@ -1,0 +1,127 @@
+#logo {
+  animation-name: logo;
+  animation-iteration-count: infinite;
+  animation-duration: 12s;
+}
+@keyframes logo {
+  0% {transform: translateX(0) translateY(30vh) scale(0);}
+  50% {transform: translateX(0) translateY(0vh) scale(2); }
+  100% {transform: translateX(120vw) translateY(10vh)scale(0); }
+}
+
+.rotate {
+  animation-name: Yrotate;
+  animation-iteration-count: infinite;
+  animation-duration: 4s;
+}
+@keyframes Yrotate {
+  from {transform: rotateY(0);}
+  to {transform: rotateY(360deg);}
+}
+
+.rotate360 {
+  animation-name: rotate360;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+}
+@keyframes rotate360 {
+from {transform: rotate(0);}
+to {transform: rotate(360deg);}
+}
+
+.float {
+  animation-name: float ;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  position: absolute;
+}
+@keyframes float {
+  0% {transform: translateX(0) translateY(0);}
+  50% {transform: translateX(-2rem) translateY(2rem); }
+  100% {transform: translateX(0) translateY(0);}
+  }
+
+  .Xmove {
+    animation-name: Xmove;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  @keyframes Xmove {
+    0% {transform: translateX(0) translateY(0);}
+    50% {transform: translateX(3rem) translateY(0);}
+    100% {transform: translateX(0rem) translateY(0);}
+  }
+
+@keyframes rainbow {
+    0% {transform: translateX(0) translateY(0);}
+    50% {transform: translateX(0) translateY(50vh);}
+    100% {transform: translateX(0) translateY(0);}
+  }
+  .XYfly {
+    transform-origin: center;
+    width: 400px;
+    height: auto;
+    animation-name: XYfly;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+  }
+    @keyframes XYfly {
+        0% {transform: translateX(0vw) translateY(-50vh);}
+        25% {transform: translateX(25vw) translateY(60vh); }
+        50% {transform: translateX(50vw) translateY(-50vh); }
+        75% {transform: translateX(75vw) translateY(50vh);}
+        100% {transform: translateX(100vw) translateY(-90vh);}
+    }
+    .Xfly {
+        animation-name: Xfly ;
+        animation-duration: 30s;
+        animation-iteration-count: infinite;
+      }
+      @keyframes Xfly {
+        0% {transform: translateX(-20rem) translateY(0) ; }
+        50% {transform: translateX(70rem) translateY(0) ;}
+        100% {transform: translateX(-20rem) translateY(0) ;}
+      }
+    .-Xfly {
+       animation-name: -Xfly ;
+       animation-duration: 25s;
+       animation-iteration-count: infinite;
+        }
+    @keyframes -Xfly {
+       from {transform: translateX(-10rem) translateY(0) scaleX(-1)scaleY(1);}
+       to {transform: translateX(250vw) translateY(0) scaleX(1)scaleY(1); }
+        }
+  #sun {
+      display: block;
+      position: absolute;
+      top: -10rem;
+      animation-name: sunrise;
+      animation-duration: 20s;
+      animation-iteration-count: infinite;
+      z-index: -1;
+    }
+    @keyframes sunrise {
+      0% {transform: translateX(-20vw) translateY(75vh);}
+      20% {transform: translateX(5vw) translateY(15vh);}
+      40% {transform: translateX(15vw) translateY(10vh);}
+      50% {transform: translateX(80vw) translateY(10vh);}
+      60% {transform: translateX(100vw) translateY(10vh);}
+      80% {transform: translateX(200vw) translateY(15vh);}
+      100% {transform: translateX(250vw) translateY(150vh);}
+    }
+
+  .pigeonXmove {
+    animation-name: pigeonXmove;
+    animation-duration: 50s;
+    animation-iteration-count: infinite;
+  }
+  @keyframes pigeonXmove {
+    0% {transform: translateX(-70vw) translateY(0);}
+    35% {transform: translateX(500vw) translateY(0);}
+    75% {transform: translateX(900vw) translateY(0);}
+    100% {transform: translateX(-70vw) translateY(0);}
+  }
+  #-butterfly {
+    transform: scaleX(-1);
+    animation-duration: 20s;
+  }

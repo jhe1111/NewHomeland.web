@@ -1,7 +1,7 @@
 <head>
    <!-- <input type="range" min="1" max="100" value="1" class="slider" id="Size-Slider"> -->
    <link rel="stylesheet" href="nav-buttons.css" />
-   <link rel="stylesheet" href="scrollbar0.css" />
+   <link rel="stylesheet" href="scrollbar.css" />
 </head>
 
 <body>
@@ -24,11 +24,12 @@
   margin: 0;
   text-align: center;
   list-style: none;
-  /* cursor: url('visuals/cursor1.png'),auto;
-  cursor: url('visuals/cursor1-.png'),auto; */
+  cursor: url(visuals/cursor/cursor.png), default;
 }
 
   .page-wrapper {
+    background: white 0.8;
+    backdrop-filter: blur(5px);
     padding: 5rem;
     width: 100vw;
     height: 100vh;
@@ -71,7 +72,7 @@
     position: relative;
     top: 2rem;
     left: 0;
-    width: 40%;
+    width: 30%;
     max-height: 100%;
     display: flex;
     flex-grow: 1;
@@ -97,40 +98,11 @@
      background-color: #DFFF00;
   }
 
-  .instructions {
-    box-sizing: content-box;
-    background-color: #DFFF00;
-    position: relative;
-    top: 0;
-    max-width: 100%; height: auto;
-    border-radius: 16px;
-    text-align: left;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    font-family: 'Montserrat', sans-serif;
-    overflow: hidden;
-  }
-  /* .instructions h4 {
-    color: blue;
-  } */
-  .instructions span {
-    display: inline-block;
-    font-size: 10pt;
-    animation: scrolling-left1 8s linear infinite;
-  }
-  @keyframes scrolling-left1 {
-    0% {transform: translateX(100%);
-    -webkit-transform: translateX(100%);}
-    100% {transform: translateX(-100%);
-    -webkit-transform: translateX(-100%);}
-  }
-
   .img-top,
   .img-bottom  {
       background-image: url("visuals/grids.png");
       background-repeat: repeat;
       background-size: cover;
-      margin-bottom: 0;
       padding: 0.5rem;
       width: 100%;
       height: 35%;
@@ -138,11 +110,12 @@
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: space-between;
-      overflow: auto;
+      overflow-x: hidden;
       border-radius: 15px;
+      box-shadow: inset 0 0 5px dimgrey;
     }
   .img-top {
-    box-sizing: content-box;
+    box-sizing: border-box;
     padding-bottom: 1.5rem;
     height: auto;
     overflow: hidden;
@@ -159,7 +132,7 @@
       max-height:100%;
       z-index: 100;
       border-radius: 20px;
-      cursor: grab;
+      cursor: url(visuals/cursor/move-yellow.png), grab;
     }
 
 .img {
@@ -177,6 +150,7 @@
     max-width: 100%;
     max-height: 50%;
     border-radius: 15px;
+    box-shadow: inset 0 0 8px dimgrey;
   }
 
 .img-left {
@@ -207,14 +181,13 @@
 .img-left li {
     width: 90%;
     margin-left: 0.5rem;
-    border-radius: 25px;
   }
 .img img {
     width: 100%;
     height: auto;
-    border-radius: 25px;
     z-index: 100;
-    cursor: grab;
+    cursor: url(visuals/cursor/move-yellow.png), grab;
+      border-radius: 25px;
     resize: both;
   }
 
@@ -239,6 +212,17 @@ li:hover{
   height: auto;
   z-index: 100;
 } */
+
+#resizable {
+  display: inline-block;
+  resize: both;
+  overflow: hidden;
+  line-height: 0;
+}
+.resizable img {
+width: 100%;
+height: 100%;
+}
 
 .page-middle{
   position: relative;
@@ -290,7 +274,9 @@ li:hover{
     z-index: -10;
   }
 
-
+  iframe {
+    box-shadow: inset 0 0 5px dimgrey;
+  }
 
 </style>
 
@@ -304,7 +290,7 @@ li:hover{
 
   <div class="page-wrapper">
 
-    <nav class="mainnav">
+    <!-- <nav class="mainnav">
       <input type="checkbox" class="infobox">
           <div class="buttons">
               <a id="info" href="">info</a>
@@ -323,31 +309,22 @@ li:hover{
               <p>
                 Dec.2022 Chicago
               </P>
-              <!-- <p>
-                “Landscape is a material ‘means’ like language or paint, embedded in a tradition of cultural significance and communication, a body of symbolic forms capable of being invoked and reshaped to express meanings and values.”——W.J.T Mitchell, Landscape and Power
-              </p> -->
-              <!-- NewHomeland is an ongoing project inquiring into the open-access landscape images that are widely circulated online and frequently used on mass-produced home accessories. Through the archive and reinterpretation of this phenomenon, this project hopes to unfold the discussion about the production chain of cheap artifacts and the social-material relations it might imply. -->
             </div>
           </div>
           <div class="blur">
           </div>
-    </nav>
+    </nav> -->
 
-
-    <input type="checkbox" class="gallerybox">
-    <input type="checkbox" class="playbox">
+    <input type="radio" name="gallery-play" class="gallerybox">
+    <input type="radio" name="gallery-play" class="playbox">
     <div class="buttons">
-        <a id="A" href="">gallery &#8631;</a>
-        <a id="B" href="">Play &#8630;</a>
+        <a id="gallery-button" href="">gallery &#8631;</a>
+        <a id="play-button" href="">play &#8630;</a>
     </div>
 
     <div class="page-left">
-      <!-- <img id="leftbar" src="visuals/leftbar.png"> -->
-      <!-- <img id="bottombar" src="visuals/bar.png"> -->
-      <!-- <img id="topbar" src="visuals/bar.png"> -->
 
-    <div class="instructions">
-      <!-- <h4>*instructions*</h4> -->
+    <div class="instruction-text" id="collage-instruction">
       <span>
         drag and move the images around!
       </span>
@@ -421,7 +398,8 @@ li:hover{
 
 </body>
 
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
@@ -433,5 +411,35 @@ li:hover{
   { $(this).after($(ui.helper).clone().draggable());});
   $( ".draggable" ).draggable({containment: "page-wrapper"
   });
-
 </script>
+
+<!-- 03 drag-resize-rotate -->
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css">
+    <link rel="stylesheet" href="drag-scale-rotate.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="jquery.ui.rotatable.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+          var params = {
+              start: function(event, ui) {
+                  console.log("Rotating started")
+              },
+              rotate: function(event, ui) {
+                  if (Math.abs(ui.angle.current > 6)) {
+                    console.log("Rotating " + ui.angle.current)
+                  }
+              },
+              stop: function(event, ui) {
+                  console.log("Rotating stopped")
+              },
+          };
+          $('.rotate').rotatable();
+          $('.drag').draggable();
+          $(".resize").resizable({
+            handles: 'ne, se, sw, nw',
+          });
+      });
+    </script> -->
